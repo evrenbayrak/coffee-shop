@@ -2,6 +2,7 @@ package coffee.shop.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import coffee.shop.model.Americano;
 import coffee.shop.model.CaffeLatte;
@@ -11,6 +12,7 @@ import coffee.shop.model.Drink;
 import coffee.shop.model.Espresso;
 import coffee.shop.model.HotWater;
 import coffee.shop.model.Mocha;
+
 
 public class DrinkListUtil {
 	
@@ -32,13 +34,19 @@ public class DrinkListUtil {
 			System.out.println(index + ". " + drink.getName() + " (" + drink.getPrice() + ")");
 			index++;
 		}
-		
-		
+			
 	}
 
 	public List<Drink> getDrinkList() {
 		return drinkList;
 	}
 
-	
+	public Optional<Drink> getSelectedDrink(int orderNo) {
+		
+		Optional<Drink> selectedDrink = drinkList.stream()
+		.filter(x -> x.getOrder() == orderNo)
+		.findFirst();
+		
+		return selectedDrink;
+	}
 }

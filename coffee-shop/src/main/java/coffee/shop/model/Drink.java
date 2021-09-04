@@ -6,5 +6,6 @@ public interface Drink {
 	String getPrice();
 	String getName();
 	String prepareOrderMessage();
+	int getOrder();
 	
 }

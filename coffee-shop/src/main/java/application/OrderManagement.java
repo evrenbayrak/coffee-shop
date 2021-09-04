@@ -1,7 +1,9 @@
 package application;
 
+import java.util.Optional;
 import java.util.Scanner;
 
+import coffee.shop.model.Drink;
 import coffee.shop.util.DrinkListUtil;
 
 public class OrderManagement {
@@ -11,28 +13,37 @@ public class OrderManagement {
 	public void init() {
 		drinkListUtil = new DrinkListUtil();
 		drinkListUtil.printDrinkOptions();
-		getUserRequest();
+		int orderNo = getUserRequest();
+		startOrderProcess(orderNo);
 	}
 	
-	public void getUserRequest() {
+	public int getUserRequest() {
 		String userRequest = "Lütfen sipariş vermek istediğiniz içecek numarasını giriniz : ";
 		int requestOrder;
 
 		 try(Scanner scanner = new Scanner(System.in)){
 			do {
-			    System.out.print(userRequest);
-			    while (!scanner.hasNextInt()) {
-			        System.out.println("Sipariş verebilmek için sayısal ürün değeri girilmelidir.");
-			        scanner.next(); // this is important!
+				System.out.print(userRequest);
+			    while (!scanner.hasNextInt()) {		       
+			        scanner.next();
+			        System.out.print("Sipariş verebilmek için sayısal ürün değeri girilmelidir : ");
 			    }
 			    requestOrder = scanner.nextInt();
 			} while (isRequestOrderInRange(requestOrder));
 		 }
-
+		 return requestOrder;
 	}
 	
-	public boolean isRequestOrderInRange(int requestOrder) {
+	public void startOrderProcess(int orderNo) {
+		Optional<Drink> drink = drinkListUtil.getSelectedDrink(orderNo);
+		if(drink.isPresent()) {
+			System.out.println(drink.get().prepareOrderMessage());
+		}
+	}
+	
+	private boolean isRequestOrderInRange(int requestOrder) {
 		return requestOrder < 0 || requestOrder > drinkListUtil.getDrinkList().size();
 	}
 	
+
 }
