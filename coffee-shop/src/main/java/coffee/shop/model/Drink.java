@@ -1,5 +1,6 @@
 package coffee.shop.model;
 
+import coffee.shop.ingredient.Ingredients;
 
 public interface Drink {
 	
@@ -7,5 +8,7 @@ public interface Drink {
 	String getName();
 	String prepareOrderMessage();
 	int getOrder();
+	void generateIngredients();
+	Ingredients getIngredients();
 	
 }

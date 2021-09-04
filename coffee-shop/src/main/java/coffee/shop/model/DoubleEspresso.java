@@ -1,6 +1,12 @@
 package coffee.shop.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import coffee.shop.ingredient.EspressoIngr;
+import coffee.shop.ingredient.Ingredient;
 import coffee.shop.ingredient.Ingredients;
+
 
 public class DoubleEspresso extends Espresso implements Drink {
 	
@@ -24,7 +30,19 @@ public class DoubleEspresso extends Espresso implements Drink {
 		// TODO Auto-generated method stub
 		return this.price + "₺";
 	}
-
+	
+	@Override
+	public void generateIngredients() {
+		ingredients = new Ingredients();
+		List<Ingredient> ingredientList = new ArrayList<>();
+		
+		ingredientList.add(new EspressoIngr(2));
+		
+		ingredients.setIngredients(ingredientList);		
+		
+	}
+	
+	@Override
 	public Ingredients getIngredients() {
 		return ingredients;
 	}

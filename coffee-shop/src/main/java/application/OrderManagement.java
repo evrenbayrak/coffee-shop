@@ -3,6 +3,7 @@ package application;
 import java.util.Optional;
 import java.util.Scanner;
 
+import coffee.shop.constants.MessageConstants;
 import coffee.shop.model.Drink;
 import coffee.shop.util.DrinkListUtil;
 
@@ -12,13 +13,14 @@ public class OrderManagement {
 	
 	public void init() {
 		drinkListUtil = new DrinkListUtil();
+		drinkListUtil.generateIngredients();
 		drinkListUtil.printDrinkOptions();
 		int orderNo = getUserRequest();
 		startOrderProcess(orderNo);
 	}
 	
 	public int getUserRequest() {
-		String userRequest = "Lütfen sipariş vermek istediğiniz içecek numarasını giriniz : ";
+		String userRequest = MessageConstants.USER_REQUEST;
 		int requestOrder;
 
 		 try(Scanner scanner = new Scanner(System.in)){
@@ -26,7 +28,7 @@ public class OrderManagement {
 				System.out.print(userRequest);
 			    while (!scanner.hasNextInt()) {		       
 			        scanner.next();
-			        System.out.print("Sipariş verebilmek için sayısal ürün değeri girilmelidir : ");
+			        System.out.print(MessageConstants.USER_WRONG_INPUT);
 			    }
 			    requestOrder = scanner.nextInt();
 			} while (isRequestOrderInRange(requestOrder));
@@ -38,6 +40,9 @@ public class OrderManagement {
 		Optional<Drink> drink = drinkListUtil.getSelectedDrink(orderNo);
 		if(drink.isPresent()) {
 			System.out.println(drink.get().prepareOrderMessage());
+			System.out.print(String.format("%s seçtiniz.", drink.get().getName()));
+			System.out.print(drink.get().getIngredients().getDetailMessage());
+			System.out.println(MessageConstants.ORDER_COMPLETED);
 		}
 	}
 	

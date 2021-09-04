@@ -1,6 +1,6 @@
 package coffee.shop.ingredient;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Ingredients {
@@ -15,8 +15,21 @@ public class Ingredients {
 		this.ingredients = ingredients;
 	}
 	public String getDetailMessage() {
-		return detailMessage;
+		StringBuilder sb = new StringBuilder();
+		sb.append("Bu içeceğimiz ");	
+		Iterator<Ingredient> iterator = ingredients.iterator();
+		
+		while(iterator.hasNext()) {
+			sb.append(iterator.next().getMessage());
+			if(iterator.hasNext()) {
+				sb.append(" ve ");
+			}
+		}
+		sb.append(" içermektedir. ");
+		detailMessage = sb.toString();
+		return detailMessage;		
 	}
+	
 	public void setDetailMessage(String detailMessage) {
 		this.detailMessage = detailMessage;
 	}

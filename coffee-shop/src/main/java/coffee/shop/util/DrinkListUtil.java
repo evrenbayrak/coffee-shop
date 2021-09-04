@@ -30,13 +30,19 @@ public class DrinkListUtil {
 	
 	public void printDrinkOptions() {
 		int index = 1;
-		for (Drink drink : drinkList) {
-			System.out.println(index + ". " + drink.getName() + " (" + drink.getPrice() + ")");
+		for (Drink drink : drinkList) {			
+			System.out.println(String.format("%d. %s (%s)",index, drink.getName(), drink.getPrice()));
 			index++;
 		}
 			
 	}
-
+	
+	public void generateIngredients() {
+		for (Drink drink : drinkList) {
+			drink.generateIngredients();
+		}
+	}
+	
 	public List<Drink> getDrinkList() {
 		return drinkList;
 	}

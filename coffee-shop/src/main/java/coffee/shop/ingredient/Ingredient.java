@@ -6,6 +6,9 @@ public interface Ingredient {
 	
 	int getQuantity();
 	
+	void setQuantity(int quantity);
+	
 	String getMessage();
 
+	
 }

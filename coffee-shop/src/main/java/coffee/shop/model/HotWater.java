@@ -1,5 +1,11 @@
 package coffee.shop.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import coffee.shop.constants.MessageConstants;
+import coffee.shop.ingredient.HotWaterIngr;
+import coffee.shop.ingredient.Ingredient;
 import coffee.shop.ingredient.Ingredients;
 
 public class HotWater implements Drink {
@@ -11,7 +17,6 @@ public class HotWater implements Drink {
 	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return this.name;
 	}
 	
@@ -20,16 +25,28 @@ public class HotWater implements Drink {
 	}
 	@Override
 	public String getPrice() {
-		// TODO Auto-generated method stub
 		return this.price + "₺";
 	}
 
 	@Override
 	public String prepareOrderMessage() {
-		// TODO Auto-generated method stub
-		return "Teşekkürler siparişiniz hazırlanıyor.";
+		return MessageConstants.DEFAULT_ORDER_MESSAGE;
+	}
+	
+	@Override
+	public void generateIngredients() {
+		ingredients = new Ingredients();
+		List<Ingredient> ingredientList = new ArrayList<>();
+		
+		Ingredient ingredient = new HotWaterIngr();		
+		ingredient.setQuantity(5);
+		ingredientList.add(ingredient);
+		
+		ingredients.setIngredients(ingredientList);		
+		
 	}
 
+	@Override
 	public Ingredients getIngredients() {
 		return ingredients;
 	}

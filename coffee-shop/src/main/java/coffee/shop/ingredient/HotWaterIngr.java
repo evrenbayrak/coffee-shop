@@ -3,12 +3,22 @@ package coffee.shop.ingredient;
 public class HotWaterIngr implements Ingredient {
 
 	private int quantity;
-	private final String name = "sýcak su";
+	private final String name = "sÄ±cak su";
 	
+	
+	
+	public HotWaterIngr() {
+		super();
+	}
+
+	public HotWaterIngr(int quantity) {
+		super();
+		this.quantity = quantity;
+	}
+
 	@Override
-	public String getMessage() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getMessage() {		
+		return String.format("%d doz %s", quantity, name);
 	}
 
 	@Override
@@ -21,6 +31,12 @@ public class HotWaterIngr implements Ingredient {
 	public int getQuantity() {
 		// TODO Auto-generated method stub
 		return quantity;
+	}
+
+	@Override
+	public void setQuantity(int quantity) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

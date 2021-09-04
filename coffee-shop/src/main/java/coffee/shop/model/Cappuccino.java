@@ -1,6 +1,13 @@
 package coffee.shop.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import coffee.shop.ingredient.EspressoIngr;
+import coffee.shop.ingredient.Ingredient;
 import coffee.shop.ingredient.Ingredients;
+import coffee.shop.ingredient.MilkFoamIngr;
+import coffee.shop.ingredient.SteamedMilkIngr;
 
 
 public class Cappuccino extends Espresso implements Drink {
@@ -25,7 +32,21 @@ public class Cappuccino extends Espresso implements Drink {
 		// TODO Auto-generated method stub
 		return this.price + "₺";
 	}
-
+	
+	@Override
+	public void generateIngredients() {
+		ingredients = new Ingredients();
+		List<Ingredient> ingredientList = new ArrayList<>();
+		
+		ingredientList.add(new EspressoIngr(1));
+		ingredientList.add(new SteamedMilkIngr(2));
+		ingredientList.add(new MilkFoamIngr(2));
+		
+		ingredients.setIngredients(ingredientList);		
+		
+	}
+	
+	@Override
 	public Ingredients getIngredients() {
 		return ingredients;
 	}

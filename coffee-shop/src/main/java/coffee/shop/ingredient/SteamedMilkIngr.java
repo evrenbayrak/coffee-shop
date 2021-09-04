@@ -3,12 +3,21 @@ package coffee.shop.ingredient;
 public class SteamedMilkIngr implements Ingredient {
 
 	private int quantity;
-	private final String name = "ýsýtýlmýþ süt";
+	private final String name = "Ä±sÄ±tÄ±lmÄ±ÅŸ sÃ¼t";
 	
+	
+	public SteamedMilkIngr() {
+		super();
+	}
+
+	public SteamedMilkIngr(int quantity) {
+		super();
+		this.quantity = quantity;
+	}
+
 	@Override
-	public String getMessage() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getMessage() {		
+		return String.format("%d doz %s", quantity, name);
 	}
 
 	@Override
@@ -21,5 +30,11 @@ public class SteamedMilkIngr implements Ingredient {
 	public int getQuantity() {
 		// TODO Auto-generated method stub
 		return quantity;
+	}
+
+	@Override
+	public void setQuantity(int quantity) {
+		// TODO Auto-generated method stub
+		
 	}
 }
