@@ -29,6 +29,7 @@ mesajında faydalanılmıştır.
    ```
 2. Zip formatında indirilmesi durumunda da "Existing maven project" seçeneği ile import edilebilir.
 
+3. Zip ile indirilmesi durumunda karşılaşılabilecek encoding problemi için proje->özellikler-> text file encoding değeri UTF-8 olarak güncellenmelidir.
 
 <!-- Örnekler -->
 ## Kullanım
