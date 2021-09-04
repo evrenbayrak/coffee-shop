@@ -7,6 +7,7 @@ public class MessageConstants {
 	
 	public static final String USER_REQUEST = "Lütfen sipariş vermek istediğiniz içecek numarasını giriniz : ";
 	public static final String USER_WRONG_INPUT = "Sipariş verebilmek için sayısal ürün değeri girilmelidir : ";
+	public static final String DRINK_NOT_FOUND = "Girilen ürün numarasına ait içecek bulunamadı.";
 	
 	public static final String ORDER_COMPLETED = "Afiyet olsun.";
 }

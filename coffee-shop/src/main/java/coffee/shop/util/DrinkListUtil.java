@@ -18,6 +18,9 @@ public class DrinkListUtil {
 	
 	private List<Drink> drinkList = new ArrayList<>();
 	
+	/**
+	 * Satışa uygun içecekleri tanımlar ve listeye ekler
+	 */
 	public DrinkListUtil() {		
 		drinkList.add(new Espresso());
 		drinkList.add(new DoubleEspresso());
@@ -28,6 +31,10 @@ public class DrinkListUtil {
 		drinkList.add(new HotWater());
 	}
 	
+	/**
+	 * Kullanıcıya sıralı şekilde içecek listesini sunar.
+	 * "1. Espresso (7)" formatında tüm içecekler sıralanır.
+	 */
 	public void printDrinkOptions() {
 		int index = 1;
 		for (Drink drink : drinkList) {			
@@ -37,6 +44,9 @@ public class DrinkListUtil {
 			
 	}
 	
+	/**
+	 * Tüm içecekler ile üretim tariflerini ilişkilendirir.
+	 */
 	public void generateIngredients() {
 		for (Drink drink : drinkList) {
 			drink.generateIngredients();
@@ -47,8 +57,14 @@ public class DrinkListUtil {
 		return drinkList;
 	}
 
+	/**
+	 * Seçilen kullanıcı sipariş no'su ile mevcut ürün listesini filtreler. Eşleşen ürün bilgisini döner.
+	 * @param orderNo
+	 * @return Drink Object
+	 */
 	public Optional<Drink> getSelectedDrink(int orderNo) {
 		
+		//Null pointer exception alınmaması için Optional nesnesi ile ilerlendi.
 		Optional<Drink> selectedDrink = drinkList.stream()
 		.filter(x -> x.getOrder() == orderNo)
 		.findFirst();

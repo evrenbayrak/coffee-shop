@@ -28,6 +28,9 @@ public class HotWater implements Drink {
 		return this.price + "₺";
 	}
 
+	/**
+	 * Sıcak su kahve türevi olmadığı için bilgilendirme mesajı ayrı tanımlandı.
+	 */
 	@Override
 	public String prepareOrderMessage() {
 		return MessageConstants.DEFAULT_ORDER_MESSAGE;

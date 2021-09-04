@@ -37,6 +37,9 @@ public class Espresso implements Drink {
 		return this.price + "₺";
 	}
 
+	/**
+	 * Mevcut tüm kahve türevleri Espresso ile üretildiği için bilgilendirme mesajı espresso nesnesi üzerinden tanımlandı.
+	 */
 	@Override
 	public final String prepareOrderMessage() {
 		return MessageConstants.COFFEE_ORDER_MESSAGE;
